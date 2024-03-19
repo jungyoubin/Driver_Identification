@@ -90,6 +90,8 @@ class MI_Model(nn.Module):
         b, c, f, h, w = optical_flow.size()
         # 프레임 당 하나의 특징으로 평균내는 대신 전체 특징을 유지
         optical_flow = optical_flow.view(-1, c, h, w)
+        print(optical_flow.shape)
+        print(sensor.shape)
         optical_flow = self.enet(optical_flow)
         optical_flow = self.fc(optical_flow)
 
